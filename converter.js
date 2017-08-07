@@ -25,56 +25,47 @@ function convert() {
 	}
 }
 function bbcToWiki(bbcode) {
-	var bbcodeTest;
-	while (bbcode != bbcodeTest) {
-		bbcodeTest = bbcode;
-		bbcode = bbcode.replace("[b]", "''''");
-		bbcode = bbcode.replace("[/b]", "'''");
-		bbcode = bbcode.replace("[i]", "''");
-		bbcode = bbcode.replace("[/i]", "''");
-		bbcode = bbcode.replace("[code]", "<pre>");
-		bbcode = bbcode.replace("[/code]", "</pre>");
-		bbcode = bbcode.replace("[s]", "<strike>");
-		bbcode = bbcode.replace("[/s]", "</strike>");
-		bbcode = bbcode.replace("[img]", "");
-		bbcode = bbcode.replace("[/img]", "");
-		bbcode = bbcode.replace("[list]", "<blockquote>");
-		bbcode = bbcode.replace("[/list]", "</blockquote>");
-		bbcode = bbcode.replace("[size=7]", "====== ");
-		bbcode = bbcode.replace("[size=7pt]", "====== ");
-		bbcode = bbcode.replace("[size=9]", "===== ");
-		bbcode = bbcode.replace("[size=12]", "==== ");
-		bbcode = bbcode.replace("[size=18]", "=== ");
-		bbcode = bbcode.replace("[size=24]", "== ");
-		bbcode = bbcode.replace("[size=9pt]", "===== ");
-		bbcode = bbcode.replace("[size=12pt]", "==== ");
-		bbcode = bbcode.replace("[size=18pt]", "=== ");
-		bbcode = bbcode.replace("[size=24pt]", "== ");
-		bbcode = bbcode.replace("[url=", "[");
-		bbcode = bbcode.replace("[/url]", " ]");
-	}
+	bbcode = bbcode.replace(/\[b\]/g, "''''");
+	bbcode = bbcode.replace(/\[\/b\]/g, "'''");
+	bbcode = bbcode.replace(/\[i\]/g, "''");
+	bbcode = bbcode.replace(/\[\/i\]/g, "''");
+	bbcode = bbcode.replace(/\[code\]/g, "<pre>");
+	bbcode = bbcode.replace(/\[\/code\]/g, "</pre>");
+	bbcode = bbcode.replace(/\[s\]/g, "<strike>");
+	bbcode = bbcode.replace(/\[\/s\]/g, "</strike>");
+	bbcode = bbcode.replace(/\[img\]/g, "");
+	bbcode = bbcode.replace(/\[\/img\]/g, "");
+	bbcode = bbcode.replace(/\[list\]/g, "<blockquote>");
+	bbcode = bbcode.replace(/\[\/list\]/g, "</blockquote>");
+	bbcode = bbcode.replace(/\[size\=7pt\](.*?)\[\/size\]/g, "====== $1 ======");
+	bbcode = bbcode.replace(/\[size\=9pt\](.*?)\[\/size\]/g, "===== $1 =====");
+	bbcode = bbcode.replace(/\[size\=12pt\](.*?)\[\/size\]/g, "==== $1 ====");
+	bbcode = bbcode.replace(/\[size\=18pt\](.*?)\[\/size\]/g, "=== $1 ===");
+	bbcode = bbcode.replace(/\[size\=24pt\](.*?)\[\/size\]/g, "== $1 ==");
+	bbcode = bbcode.replace(/\[url=((.*?))?\](.*?)\[\/url\]/g, "[$2 $3]");
+	bbcode = bbcode.replace(/\[url](.*?)\[\/url\]/g, "[$1]");
 	return bbcode;
 }
 function bbcToHTML(bbcode) {
-	var bbcodeTest;
-	while (bbcode != bbcodeTest) {
-		bbcodeTest = bbcode;
-		bbcode = bbcode.replace("[b]", "<b>");
-		bbcode = bbcode.replace("[/b]", "</b>");
-		bbcode = bbcode.replace("[i]", "</i>");
-		bbcode = bbcode.replace("[/i]", "</i>");
-		bbcode = bbcode.replace("[code]", "<code>");
-		bbcode = bbcode.replace("[/code]", "</code>");
-		bbcode = bbcode.replace("[s]", "<strike>");
-		bbcode = bbcode.replace("[/s]", "</strike>");
-		bbcode = bbcode.replace("[img]", "<img>");
-		bbcode = bbcode.replace("[/img]", "</img>");
-		bbcode = bbcode.replace("[list]", "<ul>");
-		bbcode = bbcode.replace("[/list]", "</ul>");
-		bbcode = bbcode.replace("[url=", "<a href='");
-		bbcode = bbcode.replace("]", "'>");
-		bbcode = bbcode.replace("[/url]", "<a>");
-	}
+	bbcode = bbcode.replace(/\[b\]/g, "<b>");
+	bbcode = bbcode.replace(/\[\/b\]/g, "</b>");
+	bbcode = bbcode.replace(/\[i\]/g, "</i>");
+	bbcode = bbcode.replace(/\[\/i\]/g, "</i>");
+	bbcode = bbcode.replace(/\[code\]/g, "<code>");
+	bbcode = bbcode.replace(/\[\/code\]/g, "</code>");
+	bbcode = bbcode.replace(/\[s\]/g, "<strike>");
+	bbcode = bbcode.replace(/\[\/s\]/g, "</strike>");
+	bbcode = bbcode.replace(/\[img](.*?)\[\/img\]/g, "<img src='$1'/>");
+	bbcode = bbcode.replace(/\[list\]/g, "<ul>");
+	bbcode = bbcode.replace(/\[\/list\]/g, "</ul>");
+	bbcode = bbcode.replace(/\[size\=7pt\](.*?)\[\/size\]/g, "<h5> $1 </h5>");
+	bbcode = bbcode.replace(/\[size\=9pt\](.*?)\[\/size\]/g, "<h4> $1 </h4>");
+	bbcode = bbcode.replace(/\[size\=12pt\](.*?)\[\/size\]/g, "<h3> $1 </h3>");
+	bbcode = bbcode.replace(/\[size\=18pt\](.*?)\[\/size\]/g, "<h2> $1 </h2>");
+	bbcode = bbcode.replace(/\[size\=24pt\](.*?)\[\/size\]/g, "<h1> $1 </h1>");
+	bbcode = bbcode.replace(/\[url=((.*?))?\](.*?)\[\/url\]/g, "<a href='$2'>$3</a>");
+	bbcode = bbcode.replace(/\[url](.*?)\[\/url\]/g, "<a href='$1'>$1</a>");
+	bbcode = bbcode.replace(/\n/g, "<br>");
 	return bbcode;
 }
 
