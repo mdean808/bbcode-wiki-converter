@@ -1,7 +1,7 @@
 # BBCode Markup Converter
 A BBCode converter program written using JS and Electron.
 
-It's main function is converting BBCode to Wiki Markup
+It will convert BBCode to Wiki Markup, and BBCode to HTML5
 
 # Installation
 Download the most recent zip and extract it to a new directory.
