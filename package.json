@@ -1,35 +1,40 @@
 {
-  "name": "bbc-converter",
-  "version": "0.5.1",
-  "author": "Unicorn808",
-  "main": "main.js",
-  "description": "Simple BBcode to Wiki Markup and HTML5 converter.",
-  "scripts": {
-    "start": "electron .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder"
-  },
-    "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Unicorn808/bbcode-wiki-converter"
-  },
-  "bugs": {
-    "url": "https://github.com/Unicorn808/bbcode-wiki-converter/issues"
-  },
-  "homepage": "https://github.com/Unicorn808/bbcode-wiki-converter#readme",
-  "dependencies": {
-  	"jquery": "latest",
-  	"materialize-js": "latest",
-  	"materialize-css": "latest",
-  	"hammerjs": "latest"
-  },
-  "devDependencies": {
-    "electron": "latest",
-    "electron-builder": "^19.19.1"
-  },
-    "build": {
-    "appId": "us.unicorn808.bbccodeconverter",
-    "files": ["**/*"]
-  }
+	"name": "bbc-converter",
+	"version": "0.5.1",
+	"author": "Unicorn808",
+	"main": "main.js",
+	"description": "Simple BBcode to Wiki Markup and HTML5 converter.",
+	"scripts": {
+		"start": "electron .",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"pack": "electron-builder --dir",
+		"dist": "electron-builder"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/Unicorn808/bbcode-wiki-converter"
+	},
+	"bugs": {
+		"url": "https://github.com/Unicorn808/bbcode-wiki-converter/issues"
+	},
+	"homepage": "https://github.com/Unicorn808/bbcode-wiki-converter#readme",
+	"dependencies": {
+		"jquery": "latest",
+		"materialize-js": "latest",
+		"materialize-css": "latest",
+		"hammerjs": "latest"
+	},
+	"devDependencies": {
+		"electron": "latest",
+		"electron-builder": "^19.19.1"
+	},
+	"build": {
+		"productName": "bbc-converter-0.5.1-win-x64",
+		"appId": "us.unicorn808.bbccodeconverter",
+		"files": ["**/*"],
+		"linux": {
+			"target": "AppImage",
+			"category": "Development"
+		}
+	}
 }
