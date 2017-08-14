@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BBCode Converter</title>
+    <meta charset="utf-8" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css" media="screen,projection" />
+    <link type="text/css" rel="stylesheet" href="markup.css">
+    <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="node_modules/hammerjs/hammer.min.js"></script>
+    <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.js"></script>
+    <script type="text/javascript" src="converter.js"></script>
+    <style>
+        .btn-small {
+            height: 24px;
+            line-height: 24px;
+            padding: 0 0.5rem;
+        }
+        .no-uppercase {
+           text-transform: none;
+       }
+   </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row col s12 center">
+            <h4>BBCode to Wiki Markup Converter</h4>
+            <a class="btn-small btn red waves-effect waves-light no-uppercase" onclick="supported();">syntax</a>
+            <br>
+            <br>
+            <h6>Conversions</h6>
+            <br>
+            <div class="switch">
+                <label>
+                    BBCode
+                    <input id="bbc-mark" onclick="setLanguage('bbc-html', 'bbc-mark');" checked type="checkbox">
+                    <span class="lever"></span>
+                    Markup
+                </label>
+            </div>
+            <br>
+            <div class="switch">
+                <label>
+                    BBCode
+                    <input id="bbc-html" onclick="setLanguage('bbc-mark', 'bbc-html');" type="checkbox">
+                    <span class="lever"></span>
+                    HTML5
+                </label>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row col s13 center">
+            <div class="input-field col s12">
+              <textarea id="input-bbc" class="materialize-textarea" style="border-bottom: 1px solid red; box-shadow: 0 1px 0 0 red"></textarea>
+              <label for="input-bbc" class="red-text">Input BBCode</label>
+          </div>
+          <a id="convert-btn" onclick="convert()" class="waves-effect waves-light btn red">Convert</a>
+          <br>
+          <div class="input-field col s12">
+              <textarea id="output" class="materialize-textarea" disabled style="border-bottom: 1px solid red; box-shadow: 0 1px 0 0 red"></textarea>
+              <label for="output" class="red-text">Ouptut</label>
+          </div>
+      </div>
+      <div id="preview" style="border: 2px solid; border-color: red; padding: 24px 24px 20px 24px; border-radius: 6px; margin-top: 15px; margin-bottom: 15px;">
+      </div>
+      <label for="preview" class="red-text">Preveiw (HTML5)</label>
+  </div>
+
+  <div id="supported-syntax" class="modal">
+    <div class="modal-content row col s12 center"> 
+        <h4>Supported BBCode Syntax</h4>
+        <br>
+        <h5>Wiki Markup</h5>
+        <ul class="collection">
+          <li class="collection-item">[b] - [/b]</li>
+          <li class="collection-item">[i] - [/i]</li>
+          <li class="collection-item">[code] - [/code]</li>
+          <li class="collection-item">[s] - [/s]</li>
+          <li class="collection-item">[list] - [/list]</li>
+          <li class="collection-item">[size= {font} pt] - [/size]</li>
+          <li class="collection-item">[url= {url} ] {text} - [/url]</li>
+          <li class="collection-item">[url] - [/url]</li>
+      </ul>
+      <h5>HTML5</h5>
+        <ul class="collection">
+          <li class="collection-item">[b] - [/b]</li>
+          <li class="collection-item">[i] - [/i]</li>
+          <li class="collection-item">[code] - [/code]</li>
+          <li class="collection-item">[s] - [/s]</li>
+          <li class="collection-item">[list] - [/list]</li>
+          <li class="collection-item">[size= {font} pt] - [/size]</li>
+          <li class="collection-item">[url= {url} ] {text} - [/url]</li>
+          <li class="collection-item">[url] - [/url]</li>
+      </ul>
+
+  </div>
+</div>
+<script type="text/javascript">
+    $('.modal').modal();
+
+    function supported() {
+        $('#supported-syntax').modal('open');
+    }
+</script>
+</body>
+</html>
