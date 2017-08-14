@@ -3,6 +3,8 @@ A BBCode converter program written using JS and Electron.
 
 It will convert BBCode to Wiki Markup, and BBCode to HTML5
 
+Demo: https://cdnjs.cloudflare.com/ajax/libs/hammer.js/2.0.8/hammer.min.js
+
 # Installation
 Download the most recent zip and extract it to a new directory.
 
